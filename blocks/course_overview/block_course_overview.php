@@ -104,7 +104,10 @@ class block_course_overview extends block_base {
             ob_start();
 
             require_once $CFG->dirroot."/course/lib.php";
-            print_overview($courses, $remote_courses);
+
+            // display only courses, load overviews by Ajax
+            require dirname(dirname(__DIR__)) . '/_coe/my_moodle/include1.php';
+            //print_overview($courses, $remote_courses);
 
             $content[] = ob_get_contents();
             ob_end_clean();
