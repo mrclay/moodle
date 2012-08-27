@@ -1,15 +1,26 @@
 // you must put this in your theme...
 
-$(function () {
+$(function() {
+    function text(visible) {
+        return (visible ? 'hide' : 'show') + ' activities';
+    }
     $('span.coe-show-activities').each(function () {
-        var id = $(this).data('courseid'),
-            src = $(this).data('src');
-        $(this).text('show activities').one('click', function () {
-            $(this).hide();
-            $('#coe-activities-' + id).hide().load(src, function () {
-                $(this).addClass('coe-activities-loaded').slideDown();
+        var $button = $(this),
+            id = $button.data('courseid'),
+            src = $button.data('src'),
+            $content = $('#coe-activities-' + id),
+            shown = 0;
+        $button.text(text(shown)).one('click', function () { // only first click
+            $content.hide().load(src, function () {
+                $content.addClass('coe-activities-loaded').slideDown();
+                shown = 1;
+                $button.text(text(shown));
+                $button.click(function () { // all clicks
+                    $content[shown ? 'hide' : 'show']();
+                    shown = !shown;
+                    $button.text(text(shown));
+                });
             });
         });
     });
 });
-
