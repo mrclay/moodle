@@ -28,7 +28,7 @@ class My {
                 new \moodle_url('/course/view.php', array('id' => $course->id)), $fullname, $attributes);
 
             $ajaxLink = new \moodle_url('/_coe/my_moodle/ajax.php', array('id' => $course->id));
-            $heading .= " <span class='coe-show-activities' data-courseid='{$course->id}' data-src='$ajaxLink'></span>";
+            $heading = "<span class='coe-show-activities' data-courseid='{$course->id}' data-src='$ajaxLink'></span>" . $heading;
             echo $OUTPUT->heading($heading, 3);
 
             echo "<div id='coe-activities-{$course->id}'></div>";

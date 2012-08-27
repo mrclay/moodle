@@ -5,11 +5,12 @@ div.coe-activities-loaded {
 }
 span.coe-show-activities {
     font-weight: normal;
-    margin-left: 10px;
+    margin-left: 20px;
     background: #0021A5;
     color: white;
     border-radius: 10px;
     padding: 3px 7px;
     font-size: 80%;
     cursor: pointer;
+    float: right;
 }
